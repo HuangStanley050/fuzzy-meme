@@ -35,7 +35,7 @@
     "webpack": "latest",
     "webpack-dev-server": "latest",
     "webpack-merge": "latest",
-    "webpack-node-externals": "1.6.0"
+    "webpack-node-externals": "latest"
   },
   "keywords": [],
   "author": "",

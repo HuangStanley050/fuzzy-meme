@@ -130,7 +130,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _renderer = __webpack_require__(/*! ./helpers/renderer */ \"./src/helpers/renderer.js\");\n\nvar _renderer2 = _interopRequireDefault(_renderer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\napp.use(_express2.default.static(\"public\"));\napp.get(\"/\", function (req, res) {\n  res.send((0, _renderer2.default)(req));\n});\n\napp.listen(process.env.PORT || 8000, function () {\n  return console.log(\"rendering server running....\");\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _renderer = __webpack_require__(/*! ./helpers/renderer */ \"./src/helpers/renderer.js\");\n\nvar _renderer2 = _interopRequireDefault(_renderer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\napp.use(_express2.default.static(\"public\"));\napp.get(\"*\", function (req, res) {\n  res.send((0, _renderer2.default)(req));\n});\n\napp.listen(process.env.PORT || 8000, function () {\n  return console.log(\"rendering server running....\");\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

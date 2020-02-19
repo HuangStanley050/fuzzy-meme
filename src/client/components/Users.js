@@ -6,7 +6,15 @@ const Users = props => {
   useEffect(() => {
     props.fetch();
   }, []);
-  return <div>nothing yet...</div>;
+  const userList = () => {
+    return props.users.map(user => <li key={user.id}>{user.name}</li>);
+  };
+  return (
+    <div>
+      nothing yet...
+      <ul>{userList()}</ul>
+    </div>
+  );
 };
 const mapDispatch = dispatch => ({
   fetch: () => dispatch(userFetch())

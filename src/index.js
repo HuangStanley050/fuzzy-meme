@@ -1,5 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import express from "express";
-
 import renderer from "./helpers/renderer";
 import createStore from "./helpers/setupStore";
 const app = express();

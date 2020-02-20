@@ -10,7 +10,9 @@ const app = express();
 app.use(express.static("public"));
 app.get("*", (req, res) => {
   const store = createStore();
-  console.log(matchRoutes(Routes, req.path));
+  matchRoutes(Routes, req.path).map(({ route }) => {
+    return route.loadData ? route.loadData() : null;
+  });
   res.send(renderer(req, store));
 });
 

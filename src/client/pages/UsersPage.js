@@ -22,10 +22,13 @@ const mapDispatch = dispatch => ({
 const mapState = state => ({
   users: state.user.users
 });
-export const loadData = store => {
+const loadData = store => {
   return store.dispatch(userFetch());
 };
-export default connect(
-  mapState,
-  mapDispatch
-)(Users);
+export default {
+  loadData,
+  component: connect(
+    mapState,
+    mapDispatch
+  )(Users)
+};

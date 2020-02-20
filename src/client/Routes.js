@@ -14,13 +14,9 @@ import UsersPage, { loadData } from "./pages/UsersPage";
 // };
 export default [
   {
+    ...HomePage,
     path: "/",
-    component: HomePage,
     exact: true
   },
-  {
-    path: "/users",
-    component: UsersPage,
-    loadData
-  }
+  { ...UsersPage, path: "/users" }
 ];

@@ -1,7 +1,7 @@
 import React from "react";
 //import { Route } from "react-router-dom";
 import Home from "./components/Home";
-import Users from "./components/Users";
+import Users, { loadData } from "./components/Users";
 
 // export default () => {
 //   return (
@@ -20,6 +20,7 @@ export default [
   },
   {
     path: "/users",
-    component: Users
+    component: Users,
+    loadData
   }
 ];

@@ -22,8 +22,8 @@ const mapDispatch = dispatch => ({
 const mapState = state => ({
   users: state.user.users
 });
-export const loadData = () => {
-  console.log("I am trying to data");
+export const loadData = store => {
+  return store.dispatch(userFetch());
 };
 export default connect(
   mapState,

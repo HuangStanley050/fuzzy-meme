@@ -8,11 +8,12 @@ import { matchRoutes } from "react-router-config";
 
 const app = express();
 app.use(express.static("public"));
-app.get("*", (req, res) => {
+app.get("*", async (req, res) => {
   const store = createStore();
-  matchRoutes(Routes, req.path).map(({ route }) => {
-    return route.loadData ? route.loadData() : null;
+  const promises = matchRoutes(Routes, req.path).map(({ route }) => {
+    return route.loadData ? route.loadData(store) : null;
   });
+  await Promise.all(promises);
   res.send(renderer(req, store));
 });
 

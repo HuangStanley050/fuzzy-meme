@@ -106,31 +106,31 @@ eval("\n\nmodule.exports = {\n  root: \"https://react-ssr-api.herokuapp.com/\",\
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Home = __webpack_require__(/*! ./components/Home */ \"./src/client/components/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Users = __webpack_require__(/*! ./components/Users */ \"./src/client/components/Users.js\");\n\nvar _Users2 = _interopRequireDefault(_Users);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// export default () => {\n//   return (\n//     <div>\n//       <Route exact path=\"/\" component={Home} />\n//       {/*<Route path=\"/hi\" component={() => \"hi\"} />*/}\n//       <Route path=\"/users\" component={Users} />\n//     </div>\n//   );\n// };\n\n//import { Route } from \"react-router-dom\";\nexports.default = [{\n  path: \"/\",\n  component: _Home2.default,\n  exact: true\n}, {\n  path: \"/users\",\n  component: _Users2.default,\n  loadData: _Users.loadData\n}];\n\n//# sourceURL=webpack:///./src/client/Routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _HomePage = __webpack_require__(/*! ./pages/HomePage */ \"./src/client/pages/HomePage.js\");\n\nvar _HomePage2 = _interopRequireDefault(_HomePage);\n\nvar _UsersPage = __webpack_require__(/*! ./pages/UsersPage */ \"./src/client/pages/UsersPage.js\");\n\nvar _UsersPage2 = _interopRequireDefault(_UsersPage);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// export default () => {\n//   return (\n//     <div>\n//       <Route exact path=\"/\" component={Home} />\n//       {/*<Route path=\"/hi\" component={() => \"hi\"} />*/}\n//       <Route path=\"/users\" component={Users} />\n//     </div>\n//   );\n// };\n\n//import { Route } from \"react-router-dom\";\nexports.default = [{\n  path: \"/\",\n  component: _HomePage2.default,\n  exact: true\n}, {\n  path: \"/users\",\n  component: _UsersPage2.default,\n  loadData: _UsersPage.loadData\n}];\n\n//# sourceURL=webpack:///./src/client/Routes.js?");
 
 /***/ }),
 
-/***/ "./src/client/components/Home.js":
+/***/ "./src/client/pages/HomePage.js":
+/*!**************************************!*\
+  !*** ./src/client/pages/HomePage.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"div\",\n      null,\n      \"home component\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"hi there\");\n        } },\n      \"Click Me\"\n    )\n  );\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/client/pages/HomePage.js?");
+
+/***/ }),
+
+/***/ "./src/client/pages/UsersPage.js":
 /*!***************************************!*\
-  !*** ./src/client/components/Home.js ***!
+  !*** ./src/client/pages/UsersPage.js ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"div\",\n      null,\n      \"home component\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"hi there\");\n        } },\n      \"Click Me\"\n    )\n  );\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/client/components/Home.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Users.js":
-/*!****************************************!*\
-  !*** ./src/client/components/Users.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.loadData = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _userActions = __webpack_require__(/*! ../store/actions/userActions */ \"./src/client/store/actions/userActions.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Users = function Users(props) {\n  (0, _react.useEffect)(function () {\n    props.fetch();\n  }, []);\n  var userList = function userList() {\n    return props.users.map(function (user) {\n      return _react2.default.createElement(\n        \"li\",\n        { key: user.id },\n        user.name\n      );\n    });\n  };\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    \"nothing yet...\",\n    _react2.default.createElement(\n      \"ul\",\n      null,\n      userList()\n    )\n  );\n};\nvar mapDispatch = function mapDispatch(dispatch) {\n  return {\n    fetch: function fetch() {\n      return dispatch((0, _userActions.userFetch)());\n    }\n  };\n};\nvar mapState = function mapState(state) {\n  return {\n    users: state.user.users\n  };\n};\nvar loadData = exports.loadData = function loadData(store) {\n  return store.dispatch((0, _userActions.userFetch)());\n};\nexports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(Users);\n\n//# sourceURL=webpack:///./src/client/components/Users.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.loadData = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _userActions = __webpack_require__(/*! ../store/actions/userActions */ \"./src/client/store/actions/userActions.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Users = function Users(props) {\n  (0, _react.useEffect)(function () {\n    props.fetch();\n  }, []);\n  var userList = function userList() {\n    return props.users.map(function (user) {\n      return _react2.default.createElement(\n        \"li\",\n        { key: user.id },\n        user.name\n      );\n    });\n  };\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    \"nothing yet...\",\n    _react2.default.createElement(\n      \"ul\",\n      null,\n      userList()\n    )\n  );\n};\nvar mapDispatch = function mapDispatch(dispatch) {\n  return {\n    fetch: function fetch() {\n      return dispatch((0, _userActions.userFetch)());\n    }\n  };\n};\nvar mapState = function mapState(state) {\n  return {\n    users: state.user.users\n  };\n};\nvar loadData = exports.loadData = function loadData(store) {\n  return store.dispatch((0, _userActions.userFetch)());\n};\nexports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(Users);\n\n//# sourceURL=webpack:///./src/client/pages/UsersPage.js?");
 
 /***/ }),
 

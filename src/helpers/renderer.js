@@ -14,15 +14,19 @@ export default (req, store) => {
     </Provider>
   );
   const content = renderToString(app);
+
   return `
   <html>
     <head>
-
+     <title>A React SSR app</title>
     </head>
     <body>
       <div id="root">
       ${content}
       </div>
+      <script>
+        window.INITIAL_STATE = ${JSON.stringify(store.getState())}
+      </script>
       <script src="bundle.js"></script>
     </body>
   </html>

@@ -8,7 +8,7 @@ const reducer = (state = initiatState, action) => {
     case ActionType.FETCH_USER:
       return {
         ...state,
-        users: [...state.users, ...action.payload]
+        users: [...action.payload]
       };
     default:
       return state;

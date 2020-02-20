@@ -1,7 +1,7 @@
 import React from "react";
 //import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import UsersPage, { loadData } from "./pages/UsersPage";
+import UsersPage from "./pages/UsersPage";
 
 // export default () => {
 //   return (

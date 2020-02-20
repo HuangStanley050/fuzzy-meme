@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
 });
 const store = createStore(
   rootReducer,
+  window.INITIAL_STATE,
   composeEnhancers(applyMiddleware(thunk))
 );
 

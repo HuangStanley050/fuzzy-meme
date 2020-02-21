@@ -5424,7 +5424,7 @@ eval("\n\nmodule.exports = {\n  root: \"https://react-ssr-api.herokuapp.com\",\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"h1\",\n      null,\n      \"This is header\"\n    ),\n    (0, _reactRouterConfig.renderRoutes)(route.routes)\n  );\n};\n\nexports.default = { component: App };\n\n//# sourceURL=webpack:///./src/client/App.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nvar _Header = __webpack_require__(/*! ./components/Header */ \"./src/client/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(_Header2.default, null),\n    (0, _reactRouterConfig.renderRoutes)(route.routes)\n  );\n};\n\nexports.default = { component: App };\n\n//# sourceURL=webpack:///./src/client/App.js?");
 
 /***/ }),
 
@@ -5461,6 +5461,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\n__webpack_require__(/*! core-js/stable */ \"./node_modules/core-js/stable/index.js\");\n\n__webpack_require__(/*! regenerator-runtime/runtime */ \"./node_modules/regenerator-runtime/runtime.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nvar _Routes = __webpack_require__(/*! ./Routes */ \"./src/client/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _setupStore = __webpack_require__(/*! ./setupStore */ \"./src/client/setupStore.js\");\n\nvar _setupStore2 = _interopRequireDefault(_setupStore);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = _react2.default.createElement(\n  _reactRedux.Provider,\n  { store: _setupStore2.default },\n  _react2.default.createElement(\n    _reactRouterDom.BrowserRouter,\n    null,\n    _react2.default.createElement(\n      \"div\",\n      null,\n      (0, _reactRouterConfig.renderRoutes)(_Routes2.default)\n    )\n  )\n);\n_reactDom2.default.hydrate(app, document.getElementById(\"root\"));\n\n//# sourceURL=webpack:///./src/client/client.js?");
+
+/***/ }),
+
+/***/ "./src/client/components/Header.js":
+/*!*****************************************!*\
+  !*** ./src/client/components/Header.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = function Header(props) {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      _reactRouterDom.Link,\n      { to: \"/\" },\n      \"SSR\"\n    )\n  );\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/client/components/Header.js?");
 
 /***/ }),
 

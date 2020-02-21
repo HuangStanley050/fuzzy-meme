@@ -13,14 +13,14 @@ app.use(
   "/api",
   proxy(API.root, {
     proxyReqOptDecorator(opts) {
-      opts.header["x-forward-host"] = "localhost:3000";
+      opts.headers["x-forwarded-host"] = "localhost:3000";
       return opts;
     }
   })
 );
 app.use(express.static("public"));
 app.get("*", async (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
   const promises = matchRoutes(Routes, req.path).map(({ route }) => {
     return route.loadData ? route.loadData(store) : null;
   });

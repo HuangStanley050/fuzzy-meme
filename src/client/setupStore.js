@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import userReducer from "./store/reducers/user";
+import { axiosInstance } from "./axiosSetup";
 const composeEnhancers =
   process.env.NODE_ENV === "development"
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -11,7 +12,7 @@ const rootReducer = combineReducers({
 const store = createStore(
   rootReducer,
   window.INITIAL_STATE,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk.withExtraArgument(axiosInstance)))
 );
 
 export default store;

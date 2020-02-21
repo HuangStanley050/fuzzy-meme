@@ -13,7 +13,7 @@ app.use(
   "/api",
   proxy(API.root, {
     proxyReqOptDecorator(opts) {
-      opts.header["x-forward-host"] = "localhost:8000";
+      opts.header["x-forward-host"] = "localhost:3000";
       return opts;
     }
   })
@@ -28,6 +28,6 @@ app.get("*", async (req, res) => {
   res.send(renderer(req, store));
 });
 
-app.listen(process.env.PORT || 8000, () =>
+app.listen(process.env.PORT || 3000, () =>
   console.log("rendering server running....")
 );

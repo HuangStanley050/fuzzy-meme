@@ -3,9 +3,11 @@ import thunk from "redux-thunk";
 import axios from "axios";
 import API from "../api";
 import userReducer from "../client/store/reducers/user";
+import authReducer from "../client/store/reducers/auth";
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  auth: authReducer
 });
 export default req => {
   const axiosInstance = axios.create({

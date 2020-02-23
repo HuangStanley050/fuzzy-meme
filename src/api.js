@@ -1,5 +1,5 @@
 module.exports = {
-  root: "https://react-ssr-api.herokuapp.com",
+  root: "http://react-ssr-api.herokuapp.com",
   users: "https://react-ssr-api.herokuapp.com/users",
   auth: "https://react-ssr-api.herokuapp.com/auth/google",
   admins: "https://react-ssr-api.herokuapp.com/admins",

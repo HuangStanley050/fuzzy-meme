@@ -24,8 +24,14 @@ app.get("*", async (req, res) => {
   const promises = matchRoutes(Routes, req.path).map(({ route }) => {
     return route.loadData ? route.loadData(store) : null;
   });
+
   await Promise.all(promises);
-  res.send(renderer(req, store));
+  const context = {};
+  const content = renderer(req, store, context);
+  if (context.notFound) {
+    res.status(404);
+  }
+  res.send(content);
 });
 
 app.listen(process.env.PORT || 3000, () =>

@@ -4,6 +4,7 @@ import axios from "axios";
 import API from "../api";
 import userReducer from "../client/store/reducers/user";
 import authReducer from "../client/store/reducers/auth";
+import { composeWithDevTools } from "remote-redux-devtools";
 
 const rootReducer = combineReducers({
   user: userReducer,

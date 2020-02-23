@@ -1,1 +1,399 @@
-!function(e){var t={};function r(n){if(t[n])return t[n].exports;var u=t[n]={i:n,l:!1,exports:{}};return e[n].call(u.exports,u,u.exports,r),u.l=!0,u.exports}r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var u in e)r.d(n,u,function(t){return e[t]}.bind(null,u));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=7)}([function(e,t){e.exports=require("react")},function(e,t){e.exports=require("react-router-config")},function(e,t,r){"use strict";e.exports={root:"https://react-ssr-api.herokuapp.com",users:"https://react-ssr-api.herokuapp.com/users",auth:"https://react-ssr-api.herokuapp.com/auth/google",admins:"https://react-ssr-api.herokuapp.com/admins",currentUser:"https://react-ssr-api.herokuapp.com/current_user",logout:"https://react-ssr-api.herokuapp.com/logout"}},function(e,t){e.exports=require("react-router-dom")},function(e,t){e.exports=require("react-redux")},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},u=(i(r(0)),i(r(15))),o=i(r(16)),a=i(r(18));function i(e){return e&&e.__esModule?e:{default:e}}t.default=[n({},a.default,{routes:[n({},u.default,{path:"/",exact:!0}),n({},o.default,{path:"/users"})]})]},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});t.FETCH_USER="FETCH_USER",t.FETCH_CURRENT_USER="FETCH_CURRENT_USER"},function(e,t,r){"use strict";r(8),r(9);var n=s(r(10)),u=s(r(11)),o=s(r(12)),a=s(r(20)),i=s(r(5)),c=r(1),l=s(r(2));function s(e){return e&&e.__esModule?e:{default:e}}var f,d,p=(0,n.default)();p.use("/api",(0,u.default)(l.default.root,{proxyReqOptDecorator:function(e){return e.headers["x-forwarded-host"]="localhost:3000",e}})),p.use(n.default.static("public")),p.get("*",(f=regeneratorRuntime.mark((function e(t,r){var n,u;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return n=(0,a.default)(t),u=(0,c.matchRoutes)(i.default,t.path).map((function(e){var t=e.route;return t.loadData?t.loadData(n):null})),e.next=4,Promise.all(u);case 4:r.send((0,o.default)(t,n));case 5:case"end":return e.stop()}}),e,void 0)})),d=function(){var e=f.apply(this,arguments);return new Promise((function(t,r){return function n(u,o){try{var a=e[u](o),i=a.value}catch(e){return void r(e)}if(!a.done)return Promise.resolve(i).then((function(e){n("next",e)}),(function(e){n("throw",e)}));t(i)}("next")}))},function(e,t){return d.apply(this,arguments)})),p.listen(process.env.PORT||3e3,(function(){return console.log("rendering server running....")}))},function(e,t){e.exports=require("core-js/stable")},function(e,t){e.exports=require("regenerator-runtime/runtime")},function(e,t){e.exports=require("express")},function(e,t){e.exports=require("express-http-proxy")},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=s(r(0)),u=r(13),o=r(3),a=r(4),i=r(1),c=s(r(14)),l=s(r(5));function s(e){return e&&e.__esModule?e:{default:e}}t.default=function(e,t){var r=n.default.createElement(a.Provider,{store:t},n.default.createElement(o.StaticRouter,{location:e.path,context:{}},n.default.createElement("div",null,(0,i.renderRoutes)(l.default))));return'\n  <html>\n    <head>\n     <title>A React SSR app</title>\n    </head>\n    <body>\n      <div id="root">\n      '+(0,u.renderToString)(r)+"\n      </div>\n      <script>\n        window.INITIAL_STATE = "+(0,c.default)(t.getState())+'\n      <\/script>\n      <script src="bundle.js"><\/script>\n    </body>\n  </html>\n  '}},function(e,t){e.exports=require("react-dom/server")},function(e,t){e.exports=require("serialize-javascript")},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n,u=r(0),o=(n=u)&&n.__esModule?n:{default:n};t.default={component:function(){return o.default.createElement("div",null,o.default.createElement("div",null,"home component"),o.default.createElement("button",{onClick:function(){return console.log("hi there")}},"Click Me"))}}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n,u=r(0),o=(n=u)&&n.__esModule?n:{default:n},a=r(17),i=r(4);t.default={loadData:function(e){return e.dispatch((0,a.userFetch)())},component:(0,i.connect)((function(e){return{users:e.user.users}}),(function(e){return{fetch:function(){return e((0,a.userFetch)())}}}))((function(e){(0,u.useEffect)((function(){e.fetch()}),[]);return o.default.createElement("div",null,"nothing yet...",o.default.createElement("ul",null,e.users.map((function(e){return o.default.createElement("li",{key:e.id},e.name)}))))}))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.fetchCurrentUser=t.userFetch=void 0;var n,u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}(r(6)),o=r(2);(n=o)&&n.__esModule;function a(e){return function(){var t=e.apply(this,arguments);return new Promise((function(e,r){return function n(u,o){try{var a=t[u](o),i=a.value}catch(e){return void r(e)}if(!a.done)return Promise.resolve(i).then((function(e){n("next",e)}),(function(e){n("throw",e)}));e(i)}("next")}))}}t.userFetch=function(){return e=a(regeneratorRuntime.mark((function e(t,r,n){var o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,n.get("/users");case 2:o=e.sent,t({type:u.FETCH_USER,payload:o.data});case 4:case"end":return e.stop()}}),e,void 0)}))),function(t,r,n){return e.apply(this,arguments)};var e},t.fetchCurrentUser=function(){return e=a(regeneratorRuntime.mark((function e(t,r,n){var o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,n.get("/current_user");case 2:o=e.sent,t({type:u.FETCH_CURRENT_USER,payload:o.data});case 4:case"end":return e.stop()}}),e,void 0)}))),function(t,r,n){return e.apply(this,arguments)};var e}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=a(r(0)),u=r(1),o=a(r(19));function a(e){return e&&e.__esModule?e:{default:e}}t.default={component:function(e){var t=e.route;return n.default.createElement("div",null,n.default.createElement(o.default,null),(0,u.renderRoutes)(t.routes))}}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n,u=r(0),o=(n=u)&&n.__esModule?n:{default:n},a=r(3);t.default=function(e){return o.default.createElement("div",null,o.default.createElement(a.Link,{to:"/"},"SSR"))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=r(21),u=l(r(22)),o=l(r(23)),a=l(r(2)),i=l(r(24)),c=l(r(25));function l(e){return e&&e.__esModule?e:{default:e}}var s=(0,n.combineReducers)({user:i.default,auth:c.default});t.default=function(e){var t=o.default.create({baseURL:a.default.root,headers:{cookie:e.get("cookie")||""}});return(0,n.createStore)(s,(0,n.applyMiddleware)(u.default.withExtraArgument(t)))}},function(e,t){e.exports=require("redux")},function(e,t){e.exports=require("redux-thunk")},function(e,t){e.exports=require("axios")},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},u=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}(r(6));function o(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var a={users:[]};t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:a,t=arguments[1];switch(t.type){case u.FETCH_USER:return n({},e,{users:[].concat(o(t.payload))});default:return e}}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}(r(6));t.default=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,t=arguments[1];switch(t.type){case n.FETCH_CURRENT_USER:return t.payload||!1;default:return e}}}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/api.js":
+/*!********************!*\
+  !*** ./src/api.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nmodule.exports = {\n  root: \"https://react-ssr-api.herokuapp.com\",\n  users: \"https://react-ssr-api.herokuapp.com/users\",\n  auth: \"https://react-ssr-api.herokuapp.com/auth/google\",\n  admins: \"https://react-ssr-api.herokuapp.com/admins\",\n  currentUser: \"https://react-ssr-api.herokuapp.com/current_user\",\n  logout: \"https://react-ssr-api.herokuapp.com/logout\"\n};\n\n//# sourceURL=webpack:///./src/api.js?");
+
+/***/ }),
+
+/***/ "./src/client/App.js":
+/*!***************************!*\
+  !*** ./src/client/App.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _Header = __webpack_require__(/*! ./components/Header */ \"./src/client/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _userActions = __webpack_require__(/*! ./store/actions/userActions */ \"./src/client/store/actions/userActions.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(_Header2.default, null),\n    (0, _reactRouterConfig.renderRoutes)(route.routes)\n  );\n};\n\nexports.default = {\n  component: App,\n  loadData: function loadData(_ref2) {\n    var dispatch = _ref2.dispatch;\n\n    return dispatch((0, _userActions.fetchCurrentUser)());\n  }\n};\n\n//# sourceURL=webpack:///./src/client/App.js?");
+
+/***/ }),
+
+/***/ "./src/client/Routes.js":
+/*!******************************!*\
+  !*** ./src/client/Routes.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n//import { Route } from \"react-router-dom\";\n\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _HomePage = __webpack_require__(/*! ./pages/HomePage */ \"./src/client/pages/HomePage.js\");\n\nvar _HomePage2 = _interopRequireDefault(_HomePage);\n\nvar _UsersPage = __webpack_require__(/*! ./pages/UsersPage */ \"./src/client/pages/UsersPage.js\");\n\nvar _UsersPage2 = _interopRequireDefault(_UsersPage);\n\nvar _App = __webpack_require__(/*! ./App */ \"./src/client/App.js\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// export default () => {\n//   return (\n//     <div>\n//       <Route exact path=\"/\" component={Home} />\n//       {/*<Route path=\"/hi\" component={() => \"hi\"} />*/}\n//       <Route path=\"/users\" component={Users} />\n//     </div>\n//   );\n// };\nexports.default = [_extends({}, _App2.default, {\n  routes: [_extends({}, _HomePage2.default, {\n    path: \"/\",\n    exact: true\n  }), _extends({}, _UsersPage2.default, { path: \"/users\" })]\n})];\n\n//# sourceURL=webpack:///./src/client/Routes.js?");
+
+/***/ }),
+
+/***/ "./src/client/components/Header.js":
+/*!*****************************************!*\
+  !*** ./src/client/components/Header.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = function Header(_ref) {\n  var auth = _ref.auth;\n\n  console.log(\"auth status is: \", auth);\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      _reactRouterDom.Link,\n      { to: \"/\" },\n      \"SSR\"\n    )\n  );\n};\nvar mapState = function mapState(state) {\n  return {\n    auth: state.auth\n  };\n};\nexports.default = (0, _reactRedux.connect)(mapState)(Header);\n\n//# sourceURL=webpack:///./src/client/components/Header.js?");
+
+/***/ }),
+
+/***/ "./src/client/pages/HomePage.js":
+/*!**************************************!*\
+  !*** ./src/client/pages/HomePage.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      \"div\",\n      null,\n      \"home component\"\n    ),\n    _react2.default.createElement(\n      \"button\",\n      { onClick: function onClick() {\n          return console.log(\"hi there\");\n        } },\n      \"Click Me\"\n    )\n  );\n};\n\nexports.default = { component: Home };\n\n//# sourceURL=webpack:///./src/client/pages/HomePage.js?");
+
+/***/ }),
+
+/***/ "./src/client/pages/UsersPage.js":
+/*!***************************************!*\
+  !*** ./src/client/pages/UsersPage.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _userActions = __webpack_require__(/*! ../store/actions/userActions */ \"./src/client/store/actions/userActions.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Users = function Users(props) {\n  (0, _react.useEffect)(function () {\n    props.fetch();\n  }, []);\n  var userList = function userList() {\n    return props.users.map(function (user) {\n      return _react2.default.createElement(\n        \"li\",\n        { key: user.id },\n        user.name\n      );\n    });\n  };\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    \"nothing yet...\",\n    _react2.default.createElement(\n      \"ul\",\n      null,\n      userList()\n    )\n  );\n};\nvar mapDispatch = function mapDispatch(dispatch) {\n  return {\n    fetch: function fetch() {\n      return dispatch((0, _userActions.userFetch)());\n    }\n  };\n};\nvar mapState = function mapState(state) {\n  return {\n    users: state.user.users\n  };\n};\nvar loadData = function loadData(store) {\n  return store.dispatch((0, _userActions.userFetch)());\n};\nexports.default = {\n  loadData: loadData,\n  component: (0, _reactRedux.connect)(mapState, mapDispatch)(Users)\n};\n\n//# sourceURL=webpack:///./src/client/pages/UsersPage.js?");
+
+/***/ }),
+
+/***/ "./src/client/store/actions/actions.js":
+/*!*********************************************!*\
+  !*** ./src/client/store/actions/actions.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar FETCH_USER = exports.FETCH_USER = \"FETCH_USER\";\nvar FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = \"FETCH_CURRENT_USER\";\n\n//# sourceURL=webpack:///./src/client/store/actions/actions.js?");
+
+/***/ }),
+
+/***/ "./src/client/store/actions/userActions.js":
+/*!*************************************************!*\
+  !*** ./src/client/store/actions/userActions.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.fetchCurrentUser = exports.userFetch = undefined;\n\nvar _actions = __webpack_require__(/*! ./actions */ \"./src/client/store/actions/actions.js\");\n\nvar ActionType = _interopRequireWildcard(_actions);\n\nvar _api = __webpack_require__(/*! ../../../api */ \"./src/api.js\");\n\nvar _api2 = _interopRequireDefault(_api);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n//import axios from \"axios\";\n\n\nvar userFetch = exports.userFetch = function userFetch() {\n  return function () {\n    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch, getState, api) {\n      var res;\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return api.get(\"/users\");\n\n            case 2:\n              res = _context.sent;\n\n              dispatch({ type: ActionType.FETCH_USER, payload: res.data });\n\n            case 4:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee, undefined);\n    }));\n\n    return function (_x, _x2, _x3) {\n      return _ref.apply(this, arguments);\n    };\n  }();\n};\n\nvar fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {\n  return function () {\n    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {\n      var res;\n      return regeneratorRuntime.wrap(function _callee2$(_context2) {\n        while (1) {\n          switch (_context2.prev = _context2.next) {\n            case 0:\n              _context2.next = 2;\n              return api.get(\"/current_user\");\n\n            case 2:\n              res = _context2.sent;\n\n              dispatch({ type: ActionType.FETCH_CURRENT_USER, payload: res.data });\n\n            case 4:\n            case \"end\":\n              return _context2.stop();\n          }\n        }\n      }, _callee2, undefined);\n    }));\n\n    return function (_x4, _x5, _x6) {\n      return _ref2.apply(this, arguments);\n    };\n  }();\n};\n\n//# sourceURL=webpack:///./src/client/store/actions/userActions.js?");
+
+/***/ }),
+
+/***/ "./src/client/store/reducers/auth.js":
+/*!*******************************************!*\
+  !*** ./src/client/store/reducers/auth.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _actions = __webpack_require__(/*! ../actions/actions */ \"./src/client/store/actions/actions.js\");\n\nvar ActionType = _interopRequireWildcard(_actions);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case ActionType.FETCH_CURRENT_USER:\n      return action.payload || false;\n    default:\n      return state;\n  }\n};\n\nexports.default = reducer;\n\n//# sourceURL=webpack:///./src/client/store/reducers/auth.js?");
+
+/***/ }),
+
+/***/ "./src/client/store/reducers/user.js":
+/*!*******************************************!*\
+  !*** ./src/client/store/reducers/user.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _actions = __webpack_require__(/*! ../actions/actions */ \"./src/client/store/actions/actions.js\");\n\nvar ActionType = _interopRequireWildcard(_actions);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nvar initiatState = {\n  users: []\n};\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initiatState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case ActionType.FETCH_USER:\n      return _extends({}, state, {\n        users: [].concat(_toConsumableArray(action.payload))\n      });\n    default:\n      return state;\n  }\n};\n\nexports.default = reducer;\n\n//# sourceURL=webpack:///./src/client/store/reducers/user.js?");
+
+/***/ }),
+
+/***/ "./src/helpers/renderer.js":
+/*!*********************************!*\
+  !*** ./src/helpers/renderer.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _serializeJavascript = __webpack_require__(/*! serialize-javascript */ \"serialize-javascript\");\n\nvar _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);\n\nvar _Routes = __webpack_require__(/*! ../client/Routes */ \"./src/client/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (req, store) {\n  var app = _react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _react2.default.createElement(\n        \"div\",\n        null,\n        (0, _reactRouterConfig.renderRoutes)(_Routes2.default)\n      )\n    )\n  );\n  var content = (0, _server.renderToString)(app);\n\n  return \"\\n  <html>\\n    <head>\\n     <title>A React SSR app</title>\\n    </head>\\n    <body>\\n      <div id=\\\"root\\\">\\n      \" + content + \"\\n      </div>\\n      <script>\\n        window.INITIAL_STATE = \" + (0, _serializeJavascript2.default)(store.getState()) + \"\\n      </script>\\n      <script src=\\\"bundle.js\\\"></script>\\n    </body>\\n  </html>\\n  \";\n};\n\n//# sourceURL=webpack:///./src/helpers/renderer.js?");
+
+/***/ }),
+
+/***/ "./src/helpers/setupStore.js":
+/*!***********************************!*\
+  !*** ./src/helpers/setupStore.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _api = __webpack_require__(/*! ../api */ \"./src/api.js\");\n\nvar _api2 = _interopRequireDefault(_api);\n\nvar _user = __webpack_require__(/*! ../client/store/reducers/user */ \"./src/client/store/reducers/user.js\");\n\nvar _user2 = _interopRequireDefault(_user);\n\nvar _auth = __webpack_require__(/*! ../client/store/reducers/auth */ \"./src/client/store/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nvar _remoteReduxDevtools = __webpack_require__(/*! remote-redux-devtools */ \"remote-redux-devtools\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar rootReducer = (0, _redux.combineReducers)({\n  user: _user2.default,\n  auth: _auth2.default\n});\n\nexports.default = function (req) {\n  var axiosInstance = _axios2.default.create({\n    baseURL: _api2.default.root,\n    headers: { cookie: req.get(\"cookie\") || \"\" }\n  });\n  var store = (0, _redux.createStore)(rootReducer, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosInstance)));\n  return store;\n};\n\n//# sourceURL=webpack:///./src/helpers/setupStore.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n__webpack_require__(/*! core-js/stable */ \"core-js/stable\");\n\n__webpack_require__(/*! regenerator-runtime/runtime */ \"regenerator-runtime/runtime\");\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _expressHttpProxy = __webpack_require__(/*! express-http-proxy */ \"express-http-proxy\");\n\nvar _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);\n\nvar _renderer = __webpack_require__(/*! ./helpers/renderer */ \"./src/helpers/renderer.js\");\n\nvar _renderer2 = _interopRequireDefault(_renderer);\n\nvar _setupStore = __webpack_require__(/*! ./helpers/setupStore */ \"./src/helpers/setupStore.js\");\n\nvar _setupStore2 = _interopRequireDefault(_setupStore);\n\nvar _Routes = __webpack_require__(/*! ./client/Routes */ \"./src/client/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _api = __webpack_require__(/*! ./api */ \"./src/api.js\");\n\nvar _api2 = _interopRequireDefault(_api);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step(\"next\", value); }, function (err) { step(\"throw\", err); }); } } return step(\"next\"); }); }; }\n\nvar app = (0, _express2.default)();\napp.use(\"/api\", (0, _expressHttpProxy2.default)(_api2.default.root, {\n  proxyReqOptDecorator: function proxyReqOptDecorator(opts) {\n    opts.headers[\"x-forwarded-host\"] = \"localhost:3000\";\n    return opts;\n  }\n}));\napp.use(_express2.default.static(\"public\"));\napp.get(\"*\", function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {\n    var store, promises;\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            store = (0, _setupStore2.default)(req);\n            promises = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path).map(function (_ref2) {\n              var route = _ref2.route;\n\n              return route.loadData ? route.loadData(store) : null;\n            });\n            _context.next = 4;\n            return Promise.all(promises);\n\n          case 4:\n            res.send((0, _renderer2.default)(req, store));\n\n          case 5:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, undefined);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\n\napp.listen(process.env.PORT || 3000, function () {\n  return console.log(\"rendering server running....\");\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"axios\");\n\n//# sourceURL=webpack:///external_%22axios%22?");
+
+/***/ }),
+
+/***/ "core-js/stable":
+/*!*********************************!*\
+  !*** external "core-js/stable" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"core-js/stable\");\n\n//# sourceURL=webpack:///external_%22core-js/stable%22?");
+
+/***/ }),
+
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "express-http-proxy":
+/*!*************************************!*\
+  !*** external "express-http-proxy" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"express-http-proxy\");\n\n//# sourceURL=webpack:///external_%22express-http-proxy%22?");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///external_%22react-redux%22?");
+
+/***/ }),
+
+/***/ "react-router-config":
+/*!**************************************!*\
+  !*** external "react-router-config" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router-config\");\n\n//# sourceURL=webpack:///external_%22react-router-config%22?");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"redux\");\n\n//# sourceURL=webpack:///external_%22redux%22?");
+
+/***/ }),
+
+/***/ "redux-thunk":
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"redux-thunk\");\n\n//# sourceURL=webpack:///external_%22redux-thunk%22?");
+
+/***/ }),
+
+/***/ "regenerator-runtime/runtime":
+/*!**********************************************!*\
+  !*** external "regenerator-runtime/runtime" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"regenerator-runtime/runtime\");\n\n//# sourceURL=webpack:///external_%22regenerator-runtime/runtime%22?");
+
+/***/ }),
+
+/***/ "remote-redux-devtools":
+/*!****************************************!*\
+  !*** external "remote-redux-devtools" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"remote-redux-devtools\");\n\n//# sourceURL=webpack:///external_%22remote-redux-devtools%22?");
+
+/***/ }),
+
+/***/ "serialize-javascript":
+/*!***************************************!*\
+  !*** external "serialize-javascript" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"serialize-javascript\");\n\n//# sourceURL=webpack:///external_%22serialize-javascript%22?");
+
+/***/ })
+
+/******/ });

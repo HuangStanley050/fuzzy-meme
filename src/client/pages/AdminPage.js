@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchAdmins } from "../store/actions/adminActions";
+import requireAuth from "../components/HOCs/requireAuth";
 
 const Admin = props => {
   useEffect(() => {
@@ -26,6 +27,6 @@ export default {
   component: connect(
     mapState,
     mapDispatch
-  )(Admin),
+  )(requireAuth(Admin)),
   loadData: ({ dispatch }) => dispatch(fetchAdmins())
 };

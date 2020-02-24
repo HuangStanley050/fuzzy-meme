@@ -3,6 +3,7 @@ import React from "react";
 import HomePage from "./pages/HomePage";
 import UsersPage from "./pages/UsersPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import AdminPage from "./pages/AdminPage";
 import App from "./App";
 
 // export default () => {
@@ -24,6 +25,7 @@ export default [
         exact: true
       },
       { ...UsersPage, path: "/users" },
+      { ...AdminPage, path: "/admins" },
       { ...NotFoundPage }
     ]
   }

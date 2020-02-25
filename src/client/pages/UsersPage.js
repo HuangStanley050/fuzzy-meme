@@ -10,12 +10,17 @@ const Users = props => {
   const userList = () => {
     return props.users.map(user => <li key={user.id}>{user.name}</li>);
   };
-  return (
-    <div>
+  const head = () => {
+    return (
       <Helmet>
-        <title>Users App</title>
+        <title>{`${props.users.length} users loaded`}</title>
         <meta property="og:title" content="User App" />
       </Helmet>
+    );
+  };
+  return (
+    <div>
+      {head()}
       <ul>{userList()}</ul>
     </div>
   );

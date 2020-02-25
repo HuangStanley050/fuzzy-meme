@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { userFetch } from "../store/actions/userActions";
 import { connect } from "react-redux";
 
@@ -11,7 +12,10 @@ const Users = props => {
   };
   return (
     <div>
-      nothing yet...
+      <Helmet>
+        <title>Users App</title>
+        <meta property="og:title" content="User App" />
+      </Helmet>
       <ul>{userList()}</ul>
     </div>
   );
